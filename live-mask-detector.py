@@ -6,7 +6,7 @@ TARGET_HEIGHT = 140
 TARGET_WIDTH = 140
 RESIZE_FACTOR = 4
 
-model=load_model("./face-mask-model.h5")
+model=load_model("./assets/face-mask-model.h5")
 
 labels_dict={0:'no mask',1:'with mask'}
 color_dict={0:(0,0,255),1:(0,255,0)}
@@ -15,7 +15,7 @@ color_dict={0:(0,0,255),1:(0,255,0)}
 webcam = cv2.VideoCapture(0)
 
 # OpenCV front face classifier
-classifier = cv2.CascadeClassifier('./haarcascade_frontalface_default.xml')
+classifier = cv2.CascadeClassifier('./assets/haarcascade_frontalface_default.xml')
 
 while True:
     (rval, image_capture) = webcam.read()
