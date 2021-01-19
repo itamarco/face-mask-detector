@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+  <div id="container">
+    <canvas class="center-block" id="canvasOutput" width=320 height=240></canvas>
+  </div>
+  <div class="text-center">
+
+  </div>
+  <div class="invisible">
+    <video id="video" class="hidden">Your browser does not support the video tag.</video>
+  </div>
+  <script>
+    var Module = {
+       wasmBinaryFile: 'https://huningxin.github.io/opencv.js/build/wasm/opencv_js.wasm',
+      preRun: [function() {
+        Module.FS_createPreloadedFile('/', 'haarcascade_frontalface_default.xml', 'https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_default.xml', true, false);
+      }],
+      _main: function() {opencvIsReady();}
+    };
+  </script>
+  <script src="https://huningxin.github.io/opencv.js/build/wasm/opencv.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
