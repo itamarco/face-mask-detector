@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <!-- Load the latest version of TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  </head>
+  <body>
+    <div id="output"></div>
+
+    <!-- load test image -->
+    
+      <p>
+      <input type="file" onChange="displayImage(this);"/>
+      </p>
+      <img id="testImg" style="height: 300px;width: 300px;" crossorigin src="https://i.imgur.com/JlUvsxa.jpg" width="227" height="227"/>
+      <p>
+      <button onclick="classifyImage();">Detect!</button>
+      </p>
+    
+
+
+    <script src="index.js"></script>
+  </body>
+</html>

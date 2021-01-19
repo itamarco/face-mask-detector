@@ -49,7 +49,7 @@ function displayImage(obj) {
 }
 
 async function liveDetect() {
-    cosnt webcamConfig: webcamConfig = {
+    const webcamConfig = {
 
     }
     const webcamElement = document.getElementById('webcam');
@@ -92,7 +92,7 @@ async function app() {
 
     printOutput('Successfully loaded model');
 
-    liveDetect();
+    //liveDetect();
 }
 
 

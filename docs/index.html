@@ -1,24 +1,127 @@
-<html>
-  <head>
-    <!-- Load the latest version of TensorFlow.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-  </head>
-  <body>
-    <div id="output"></div>
+<!DOCTYPE html>
+<html lang="en">
 
-    <!-- load test image -->
-    
-      <p>
-      <input type="file" onChange="displayImage(this);"/>
-      </p>
-      <img id="testImg" style="height: 300px;width: 300px;" crossorigin src="https://i.imgur.com/JlUvsxa.jpg" width="227" height="227"/>
-      <p>
-      <button onclick="classifyImage();">Detect!</button>
-      </p>
-    
+<head>
+  <title>Face Mask Detector</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--===============================================================================================-->
+  <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="css/util.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <!--===============================================================================================-->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+</head>
+
+<body>
+
+  <div class="contact1">
+
+    <div class="container-contact1">
+      <div class="main-wrapper">
+        <div class="contact1-form-title-container">
+          <span class="contact1-form-title">
+            Face Mask Detector
+          </span>
+          <div>
+            <a href="https://github.com/itamarco/face-mask-detector">
+              <img src="images/icons/github.png" height="30" />
+              <span>itamarco/face-mask-detector</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="live-detector">
+          <div id="container">
+            <canvas class="center-block" id="canvasOutput" width=240 height=200></canvas>
+          </div>
+          <button onclick="stopCamera();">Stop Camera</button>
+          <div class="invisible">
+            <video id="video" class="hidden">Your browser does not support the video tag.</video>
+          </div>
+        </div>
+
+        <form class="contact1-form" onsubmit="classifyImage(event);">
+          <div class="wrap-input1">
+            <input type="file" onChange="displayImage(this);">
+          </div>
+
+          <div class="wrap-input1">
+            <img src="images/img-01.png" alt="Test Image" id="testImg">
+          </div>
 
 
-    <script src="index.js"></script>
-  </body>
+          <div id="output" class="wrap-input1">
+            This is output
+          </div>
+
+          <div class="container-contact1-form-btn">
+            <button class="contact1-form-btn">
+              <span>
+                Detect Mask!
+                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+              </span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+  <!--===============================================================================================-->
+  <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/bootstrap/js/popper.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/select2/select2.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/tilt/tilt.jquery.min.js"></script>
+  <script>
+    $('.js-tilt').tilt({
+      scale: 1.1
+    })
+  </script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WYEZG7QZ55"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-WYEZG7QZ55');
+  </script>
+
+  <!--===============================================================================================-->
+  <script src="js/main.js"></script>
+  <script src="js/face-mask.js"></script>
+  <script>
+    var Module = {
+       wasmBinaryFile: 'https://huningxin.github.io/opencv.js/build/wasm/opencv_js.wasm',
+      preRun: [function() {
+        Module.FS_createPreloadedFile('/', 'haarcascade_frontalface_default.xml', 'https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_default.xml', true, false);
+      }],
+      _main: function() {opencvIsReady();}
+    };
+  </script>
+  <script src="https://huningxin.github.io/opencv.js/build/wasm/opencv.js"></script>
+  <script src="js/face-detection.js"></script>
+</body>
+
 </html>
