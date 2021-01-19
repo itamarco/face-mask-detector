@@ -31,7 +31,7 @@ function startCamera() {
       video.play();
     })
     .catch(function (err) {
-      printOutput("An error occured! " + err.msg);
+      printOutput("An error occured! " + err);
     });
 
   video.addEventListener("canplay", function (ev) {
