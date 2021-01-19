@@ -121,7 +121,7 @@ function drawResults(ctx, results, scale) {
     ctx.fillStyle = color;
     ctx.fillRect(x,y-50,xWidth,50);
     ctx.strokeRect(x,y,xWidth,yWidth);
-    ctx.font = '36px Arial';
+    ctx.font = 'bold 32px arial';
     ctx.fillStyle = 'white';
     ctx.fillText(text, x, y - 4)
   }
@@ -143,10 +143,11 @@ function stopCamera() {
   video.srcObject = null;
   stream.getVideoTracks()[0].stop();
   streaming = false;
+  printOutput('Reload the page to start over')
 }
 
 
 function opencvIsReady() {
-  console.log('OpenCV.js is ready');
+  printOutput('OpenCV.js is ready');
   startCamera();
 }

@@ -35,18 +35,23 @@
             Face Mask Detector
           </span>
           <div>
-            <a href="https://github.com/itamarco/face-mask-detector">
+            <a href="https://github.com/itamarco/face-mask-detector" target="_blank">
               <img src="images/icons/github.png" height="30" />
               <span>itamarco/face-mask-detector</span>
             </a>
           </div>
         </div>
 
-        <div class="live-detector">
+        <img src="images/loading.gif" id="loading-gif" class="center-block"/>
+        <div class="live-detector" id="live-detector">
           <div id="container">
             <canvas class="center-block" id="canvasOutput" width=240 height=200></canvas>
           </div>
-          <button onclick="stopCamera();">Stop Camera</button>
+
+          <div class="container-contact1-form-btn">
+            <button class="contact1-form-btn" onclick="stopCamera();">Stop Camera</button>
+          </div>
+
           <div class="invisible">
             <video id="video" class="hidden">Your browser does not support the video tag.</video>
           </div>
@@ -61,11 +66,6 @@
             <img src="images/img-01.png" alt="Test Image" id="testImg">
           </div>
 
-
-          <div id="output" class="wrap-input1">
-            This is output
-          </div>
-
           <div class="container-contact1-form-btn">
             <button class="contact1-form-btn">
               <span>
@@ -75,6 +75,10 @@
             </button>
           </div>
         </form>
+
+        <p id="output" class="wrap-input1">
+          This is output
+        </div>
       </div>
 
     </div>

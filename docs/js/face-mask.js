@@ -48,35 +48,6 @@ function displayImage(obj) {
     }
 }
 
-async function liveDetect() {
-    const webcamConfig = {
-
-    }
-    const webcamElement = document.getElementById('webcam');
-    const webcam = await tf.data.webcam(webcamElement);
-    while (true) {
-        const img = await webcam.capture()
-        .resizeWidth
-        .toFloat()
-        .div(255)
-        .reshape([1, TARGET_WIDTH, TARGET_HEIGHT, 3]);
-        //const tensor = proccessImage(img);
-        const { classIndex, score } = predict(img);
-
-
-        document.getElementById('outpur').innerText = `
-            prediction: ${result[0].className}\n
-            probability: ${result[0].probability}
-            `;
-        // Dispose the tensor to release the memory.
-        img.dispose();
-        //tensor.dispose();
-
-        // Give some breathing room by waiting for the next animation frame to
-        // fire.
-        await tf.nextFrame();
-    }
-}
 
 function printOutput(msg) {
     document.getElementById('output').innerHTML = msg;
@@ -84,6 +55,7 @@ function printOutput(msg) {
 
 
 async function app() {
+    $('#live-detector').hide();
     printOutput('Loading face-mask model..');
 
 
@@ -92,7 +64,8 @@ async function app() {
 
     printOutput('Successfully loaded model');
 
-    //liveDetect();
+    $('#loading-gif').hide();
+    $('#live-detector').show();
 }
 
 
