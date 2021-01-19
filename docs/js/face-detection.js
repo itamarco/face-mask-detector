@@ -20,7 +20,11 @@ let hasMaskByPredictionClass = {
 
 function startCamera() {
   if (streaming) return;
-  navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+  navigator.mediaDevices.getUserMedia({
+    video: {
+      width: { max: 380 }, height: { max: 260 }, facingMode: "user"
+    }, audio: false
+  })
     .then(function (s) {
       stream = s;
       video.srcObject = s;
@@ -72,7 +76,7 @@ function processVideo() {
 
   cv.flip(srcMat, srcMat, 1)
   cv.cvtColor(srcMat, grayMat, cv.COLOR_RGBA2GRAY);
-  
+
   let faces = [];
 
   let faceVect = new cv.RectVector();
@@ -91,7 +95,7 @@ function processVideo() {
   faceMat.delete();
   faceVect.delete();
 
-  
+
   drawResults(canvasOutputCtx, faces, scale);
   requestAnimationFrame(processVideo);
 }
@@ -102,10 +106,10 @@ function drawResults(ctx, results, scale) {
     let xScale = videoWidth / scale.width;
     let yScale = videoHeight / scale.height;
 
-    let [x,y,xWidth,yWidth] = [faceRect.x * xScale -3 , faceRect.y * yScale + 3 , faceRect.width * xScale + 3, faceRect.height * yScale];
-    let color,text;
+    let [x, y, xWidth, yWidth] = [faceRect.x * xScale - 3, faceRect.y * yScale + 3, faceRect.width * xScale + 3, faceRect.height * yScale];
+    let color, text;
 
-    let {classIndex, score} = detectMask(canvasOutputCtx,x,y,xWidth,yWidth);
+    let { classIndex, score } = detectMask(canvasOutputCtx, x, y, xWidth, yWidth);
     let hasMask = hasMaskByPredictionClass[classIndex];
     score = score.toFixed(3);
 
@@ -119,8 +123,8 @@ function drawResults(ctx, results, scale) {
     ctx.lineWidth = 4;
     ctx.strokeStyle = color;
     ctx.fillStyle = color;
-    ctx.fillRect(x,y-50,xWidth,50);
-    ctx.strokeRect(x,y,xWidth,yWidth);
+    ctx.fillRect(x, y - 50, xWidth, 50);
+    ctx.strokeRect(x, y, xWidth, yWidth);
     ctx.font = 'bold 32px arial';
     ctx.fillStyle = 'white';
     ctx.fillText(text, x, y - 4)
@@ -128,12 +132,12 @@ function drawResults(ctx, results, scale) {
 }
 
 function detectMask(canvasCtx, x, y, xWidth, yWidth) {
-    //get image data
-    let faceImage = canvasOutputCtx.getImageData(x,y,xWidth,yWidth);
-    let tensor = proccessImage(faceImage);
-    let prediction = predict(tensor);
-    console.log(prediction)
-    return prediction;
+  //get image data
+  let faceImage = canvasOutputCtx.getImageData(x, y, xWidth, yWidth);
+  let tensor = proccessImage(faceImage);
+  let prediction = predict(tensor);
+  console.log(prediction)
+  return prediction;
 }
 
 function stopCamera() {
