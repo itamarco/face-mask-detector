@@ -17,7 +17,7 @@ Inspired by [this blog post](https://data-flair.training/blogs/face-mask-detecti
 Taken from [chandrikadeb7 repo](https://github.com/chandrikadeb7/Face-Mask-Detection)
 
 ### Model 
-#### [jupyter notebook](https://colab.research.google.com/github/itamarco/face-mask-detector/blob/master/face_masks_model.ipynb)
+#### [Open in jupyter notebook](https://colab.research.google.com/github/itamarco/face-mask-detector/blob/master/face_masks_model.ipynb)
 A convolution network consist of these layers:
 * Two pairs of Conv and MaxPool layers to extract features from the dataset.
 * Flatten and Dropout layer to convert the data in 1D and ensure overfitting.
