@@ -22,7 +22,7 @@ function startCamera() {
   if (streaming) return;
   navigator.mediaDevices.getUserMedia({
     video: {
-      width: { max: 380 }, height: { max: 260 }, facingMode: "user"
+      facingMode: "user"
     }, audio: false
   })
     .then(function (s) {

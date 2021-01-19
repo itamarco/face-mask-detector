@@ -76,6 +76,11 @@ p {
 	margin: 0px;
 }
 
+div {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
 ul, li {
 	margin: 0px;
 	list-style-type: none;
@@ -207,7 +212,7 @@ iframe {
 .contact1-form-title-container {
   font-family: Montserrat-ExtraBold;
   line-height: 1.2;
-  padding-bottom: 34px;
+  padding-bottom: 4px;
 }
 
 input.input1 { 

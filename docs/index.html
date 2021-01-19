@@ -44,13 +44,14 @@
 
         <img src="images/loading.gif" id="loading-gif" class="center-block"/>
         <div class="live-detector" id="live-detector">
-          <div id="container">
-            <canvas class="center-block" id="canvasOutput" width=240 height=200></canvas>
-          </div>
-
           <div class="container-contact1-form-btn">
             <button class="contact1-form-btn" onclick="stopCamera();">Stop Camera</button>
           </div>
+          
+          <div id="container">
+            <canvas class="center-block" id="canvasOutput"></canvas>
+          </div>
+
 
           <div class="invisible">
             <video id="video" class="hidden">Your browser does not support the video tag.</video>
@@ -76,8 +77,7 @@
           </div>
         </form>
 
-        <p id="output" class="wrap-input1">
-        </p>
+        <div id="output" class="wrap-input1"></div>
       </div>
 
     </div>
