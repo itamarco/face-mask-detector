@@ -50,9 +50,12 @@ function displayImage(obj) {
 
 
 function printOutput(msg) {
-    document.getElementById('output').innerHTML = msg;
+    $('#output').append(msg + '<br>');
 }
 
+function clearOutput() {
+    $('#output').html('');
+}
 
 async function app() {
     $('#live-detector').hide();
@@ -62,7 +65,7 @@ async function app() {
     // Load the model.
     model = await tf.loadLayersModel('https://raw.githubusercontent.com/itamarco/face-mask-detector/master/assets/model-json/model.json')
 
-    printOutput('Successfully loaded model');
+    printOutput('Successfully loaded face-mask model');
 
     $('#loading-gif').hide();
     $('#live-detector').show();

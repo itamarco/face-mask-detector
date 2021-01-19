@@ -27,7 +27,7 @@ function startCamera() {
       video.play();
     })
     .catch(function (err) {
-      console.log("An error occured! " + err);
+      printOutput("An error occured! " + err.msg);
     });
 
   video.addEventListener("canplay", function (ev) {
@@ -143,11 +143,13 @@ function stopCamera() {
   video.srcObject = null;
   stream.getVideoTracks()[0].stop();
   streaming = false;
+  clearOutput();
   printOutput('Reload the page to start over')
 }
 
 
 function opencvIsReady() {
-  printOutput('OpenCV.js is ready');
+  printOutput('OpenCV is ready');
+  printOutput('Please allow camera access');
   startCamera();
 }
